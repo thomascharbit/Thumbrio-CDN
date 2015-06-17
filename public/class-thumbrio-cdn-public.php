@@ -239,13 +239,13 @@ class Thumbrio_Cdn_Public {
 		// We should add the API to the URL when we use the non customized
 		// thumbr.io domains
 		if ( $base_url == self::THUMBRIO_BASE_URL_HTTP || $base_url == self::THUMBRIO_BASE_URL_HTTPS ) {
-			$path = THUMBRIO_API_KEY . "/$path";
+			$path = getenv('THUMBRIO_API_KEY') . "/$path";
 		}
 
 		// some bots (msnbot-media) "fix" the url changing // by /, so even if
 		// it's legal it's troublesome to use // in a URL.
 		$path = str_replace('//', '%2F%2F', $path);
-		$token = hash_hmac('md5', $base_url . $path, THUMBRIO_SECRET_KEY);
+		$token = hash_hmac('md5', $base_url . $path, getenv('THUMBRIO_SECRET_KEY'));
 
 		return "$base_url$token/$path";
 	}
