@@ -165,7 +165,7 @@ class Thumbrio_Cdn_Public {
 
 			foreach ( $imagedata['sizes'] as $_size => $data ) {
 				// already cropped to width or height; so use this size
-				if ( ( $data['width'] == $size[0] && $data['height'] <= $size[1] ) || ( $data['height'] == $size[1] && $data['width'] <= $size[0] ) ) {
+				if ( ( $data['width'] == $size[0] && $data['height'] >= $size[1] ) || ( $data['height'] == $size[1] && $data['width'] >= $size[0] ) ) {
 					$file = $data['file'];
 					list($width, $height) = image_constrain_size_for_editor( $data['width'], $data['height'], $size );
 					return compact( 'file', 'width', 'height' );
