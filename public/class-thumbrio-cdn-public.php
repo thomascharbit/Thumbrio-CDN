@@ -81,7 +81,7 @@ class Thumbrio_Cdn_Public {
 		$dimensions = "{$width}x{$height}";
 
 		// Add smart crop flag if needed
-		if ( $crop ) $dimensions .= 's';
+		if ( $crop ) $dimensions .= 'c';
 
 		$query_args = ( is_array($size) && isset($size[3]) ) ? http_build_query( $size[3] ) : null;
 
